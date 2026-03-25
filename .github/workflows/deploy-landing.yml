@@ -1,0 +1,43 @@
+name: Deploy Abacus Landing to GitHub Pages
+
+on:
+  push:
+    branches:
+      - claude/abacus-landing-page-wZQVB   # Trigger bei Push auf diesen Branch
+      - main                                 # optional: auch main mitdeployen
+    paths:
+      - 'abacus-landing/**'                  # Nur wenn sich etwas im Projekt ändert
+
+permissions:
+  contents: write   # Zum Pushen auf den gh-pages Branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: abacus-landing/package-lock.json
+
+      - name: Install Dependencies
+        working-directory: abacus-landing
+        run: npm ci
+
+      - name: Build
+        working-directory: abacus-landing
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: abacus-landing/dist
+          # Stellt sicher, dass GitHub Pages eine React SPA korrekt ausliefert
+          force_orphan: true
