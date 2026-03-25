@@ -1,6 +1,6 @@
 /**
- * WhyUs Section — Bullet-Points + Illustration.
- * Split-layout: text left, numbers/visual right.
+ * WhyUs Section — dark theme.
+ * USP bullets left, stats grid right.
  */
 
 const reasons = [
@@ -44,7 +44,7 @@ const reasons = [
 ];
 
 const stats = [
-  { value: '15+', label: 'Jahre\nMarkterfahrung' },
+  { value: '15+',  label: 'Jahre\nMarkterfahrung' },
   { value: '200+', label: 'Erfolgreich\nabgeschlossene Projekte' },
   { value: '30 %', label: 'Ø Effizienz-\nsteigerung' },
   { value: '98 %', label: 'Kunden-\nzufriedenheit' },
@@ -52,7 +52,7 @@ const stats = [
 
 export default function WhyUs() {
   return (
-    <section id="warum" className="bg-white py-24 px-6">
+    <section id="warum" className="bg-[#0a0a0f] py-24 px-6">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
         {/* Left — reasons */}
@@ -60,7 +60,7 @@ export default function WhyUs() {
           <span className="text-[#c8102e] text-xs font-semibold uppercase tracking-widest">
             Warum Abacus Solutions
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#1a1a2e] tracking-tight mb-10">
+          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight mb-10">
             Der Unterschied, der zählt
           </h2>
 
@@ -71,8 +71,8 @@ export default function WhyUs() {
                   {r.icon}
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#1a1a2e] mb-1">{r.title}</h3>
-                  <p className="text-sm text-[#5a5a72] leading-relaxed">{r.body}</p>
+                  <h3 className="font-bold text-white mb-1">{r.title}</h3>
+                  <p className="text-sm text-[#808098] leading-relaxed">{r.body}</p>
                 </div>
               </li>
             ))}
@@ -86,24 +86,16 @@ export default function WhyUs() {
               key={s.label}
               className={`relative rounded-2xl p-7 overflow-hidden border ${
                 i === 0
-                  ? 'bg-[#c8102e] border-[#c8102e] text-white'
-                  : 'bg-[#f5f5f7] border-[#e8e8ed] text-[#1a1a2e]'
+                  ? 'bg-[#c8102e] border-[#c8102e]'
+                  : 'bg-[#13131c] border-white/5'
               }`}
             >
               {/* Decorative circle */}
-              <div
-                className={`absolute -bottom-6 -right-6 w-24 h-24 rounded-full ${
-                  i === 0 ? 'bg-white/10' : 'bg-[#c8102e]/6'
-                }`}
-              />
+              <div className={`absolute -bottom-6 -right-6 w-24 h-24 rounded-full ${i === 0 ? 'bg-white/10' : 'bg-[#c8102e]/8'}`} />
               <p className={`text-4xl font-black mb-2 ${i === 0 ? 'text-white' : 'text-[#c8102e]'}`}>
                 {s.value}
               </p>
-              <p
-                className={`text-sm leading-snug whitespace-pre-line ${
-                  i === 0 ? 'text-white/80' : 'text-[#5a5a72]'
-                }`}
-              >
+              <p className={`text-sm leading-snug whitespace-pre-line ${i === 0 ? 'text-white/80' : 'text-[#808098]'}`}>
                 {s.label}
               </p>
             </div>

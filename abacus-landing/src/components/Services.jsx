@@ -1,6 +1,6 @@
 /**
- * Services Section — 4 Kacheln mit Icon + Headline + Beschreibung.
- * Hover: leichter Hebe-Effekt + roter Akzent-Strich oben.
+ * Services Section — dark theme.
+ * 4 Kacheln mit Icon + Headline + Beschreibung.
  */
 
 const services = [
@@ -12,8 +12,7 @@ const services = [
     ),
     title: 'IT-Consulting',
     short: 'Strategie & Architektur',
-    description:
-      'Wir analysieren Ihre bestehende IT-Landschaft, identifizieren Engpässe und entwickeln eine zukunftssichere Technologiestrategie — von der Infrastruktur bis zur Cloud-Migration.',
+    description: 'Wir analysieren Ihre bestehende IT-Landschaft, identifizieren Engpässe und entwickeln eine zukunftssichere Technologiestrategie — von der Infrastruktur bis zur Cloud-Migration.',
   },
   {
     icon: (
@@ -23,8 +22,7 @@ const services = [
     ),
     title: 'Prozessoptimierung',
     short: 'Effizienz steigern',
-    description:
-      'Schlanke, automatisierte Prozesse sind der Schlüssel zu mehr Produktivität. Wir modellieren, analysieren und redesignen Ihre Geschäftsprozesse — messbar und nachhaltig.',
+    description: 'Schlanke, automatisierte Prozesse sind der Schlüssel zu mehr Produktivität. Wir modellieren, analysieren und redesignen Ihre Geschäftsprozesse — messbar und nachhaltig.',
   },
   {
     icon: (
@@ -34,8 +32,7 @@ const services = [
     ),
     title: 'Digitalisierung',
     short: 'Transformation gestalten',
-    description:
-      'Von der Papierakte zur digitalen Plattform: Wir begleiten Ihre digitale Transformation ganzheitlich — von der Bestandsaufnahme über die Tool-Auswahl bis zum Go-live.',
+    description: 'Von der Papierakte zur digitalen Plattform: Wir begleiten Ihre digitale Transformation ganzheitlich — von der Bestandsaufnahme über die Tool-Auswahl bis zum Go-live.',
   },
   {
     icon: (
@@ -45,49 +42,47 @@ const services = [
     ),
     title: 'Datenanalyse & KI',
     short: 'Daten als Wettbewerbsvorteil',
-    description:
-      'Aus Rohdaten werden Entscheidungsgrundlagen: Wir implementieren Business-Intelligence-Lösungen und KI-gestützte Prozesse, die Ihnen echten Informationsvorsprung verschaffen.',
+    description: 'Aus Rohdaten werden Entscheidungsgrundlagen: Wir implementieren Business-Intelligence-Lösungen und KI-gestützte Prozesse, die Ihnen echten Informationsvorsprung verschaffen.',
   },
 ];
 
 export default function Services() {
   return (
-    <section id="leistungen" className="bg-[#f5f5f7] py-24 px-6">
+    <section id="leistungen" className="bg-[#0d0d12] py-24 px-6">
       <div className="max-w-6xl mx-auto">
+
         {/* Section header */}
         <div className="text-center mb-16">
           <span className="text-[#c8102e] text-xs font-semibold uppercase tracking-widest">
             Unsere Leistungen
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#1a1a2e] tracking-tight">
+          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Was wir für Sie leisten
           </h2>
-          <p className="mt-4 text-[#5a5a72] max-w-xl mx-auto leading-relaxed">
+          <p className="mt-4 text-[#808098] max-w-xl mx-auto leading-relaxed">
             Von der strategischen Beratung bis zur technischen Umsetzung — wir
             decken das vollständige Spektrum der digitalen Transformation ab.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => (
             <div
               key={s.title}
-              className="group relative bg-white rounded-2xl p-6 shadow-sm border border-[#e8e8ed] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              className="group relative bg-[#13131c] rounded-2xl p-6 border border-white/5 hover:border-[#c8102e]/30 hover:shadow-xl hover:shadow-[#c8102e]/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
-              {/* Red accent bar on top (visible on hover) */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#c8102e] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              {/* Red accent bar (hover) */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c8102e] to-[#ff4060] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
               {/* Icon */}
               <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#c8102e]/10 text-[#c8102e] group-hover:bg-[#c8102e] group-hover:text-white transition-colors duration-300">
                 {s.icon}
               </div>
 
-              <p className="text-[10px] font-semibold text-[#c8102e] uppercase tracking-widest mb-1">
-                {s.short}
-              </p>
-              <h3 className="text-lg font-bold text-[#1a1a2e] mb-3">{s.title}</h3>
-              <p className="text-sm text-[#5a5a72] leading-relaxed">{s.description}</p>
+              <p className="text-[10px] font-semibold text-[#c8102e] uppercase tracking-widest mb-1">{s.short}</p>
+              <h3 className="text-lg font-bold text-white mb-3">{s.title}</h3>
+              <p className="text-sm text-[#808098] leading-relaxed">{s.description}</p>
 
               {/* Arrow on hover */}
               <div className="mt-5 flex items-center gap-1 text-[#c8102e] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">

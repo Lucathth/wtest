@@ -1,43 +1,38 @@
 /**
- * References / Trust Section
- * - Logo placeholder grid for client logos
- * - Two testimonial cards
+ * References / Trust Section — dark theme.
  */
 
-/* Placeholder logo component — renders a branded skeleton */
 function LogoPlaceholder({ name, abbr }) {
   return (
-    <div className="flex items-center justify-center h-14 px-6 bg-white rounded-xl border border-[#e8e8ed] hover:border-[#c8102e]/30 hover:shadow-sm transition-all duration-200 group">
-      <div className="flex items-center gap-2 opacity-40 group-hover:opacity-70 transition-opacity">
-        <div className="w-7 h-7 rounded bg-[#1a1a2e] flex items-center justify-center text-white text-xs font-bold">
+    <div className="flex items-center justify-center h-14 px-4 bg-[#13131c] rounded-xl border border-white/5 hover:border-[#c8102e]/30 hover:shadow-lg hover:shadow-[#c8102e]/5 transition-all duration-200 group">
+      <div className="flex items-center gap-2 opacity-30 group-hover:opacity-70 transition-opacity">
+        <div className="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-white text-xs font-bold">
           {abbr}
         </div>
-        <span className="text-sm font-semibold text-[#1a1a2e] tracking-tight">{name}</span>
+        <span className="text-sm font-semibold text-white tracking-tight">{name}</span>
       </div>
     </div>
   );
 }
 
 const logos = [
-  { name: 'TechCorp AG', abbr: 'TC' },
-  { name: 'InnoGroup', abbr: 'IG' },
-  { name: 'DataVentures', abbr: 'DV' },
-  { name: 'Nexus GmbH', abbr: 'NX' },
-  { name: 'AlphaWerk', abbr: 'AW' },
-  { name: 'BetaLogic', abbr: 'BL' },
+  { name: 'TechCorp AG',   abbr: 'TC' },
+  { name: 'InnoGroup',     abbr: 'IG' },
+  { name: 'DataVentures',  abbr: 'DV' },
+  { name: 'Nexus GmbH',    abbr: 'NX' },
+  { name: 'AlphaWerk',     abbr: 'AW' },
+  { name: 'BetaLogic',     abbr: 'BL' },
 ];
 
 const testimonials = [
   {
-    quote:
-      'Dank Abacus Solutions haben wir unsere internen Prozesse in nur vier Monaten vollständig digitalisiert. Die Einsparungen übertrafen unsere Erwartungen deutlich.',
+    quote: 'Dank Abacus Solutions haben wir unsere internen Prozesse in nur vier Monaten vollständig digitalisiert. Die Einsparungen übertrafen unsere Erwartungen deutlich.',
     name: 'Dr. Markus Heidler',
     role: 'CTO, TechCorp AG',
     initials: 'MH',
   },
   {
-    quote:
-      'Das Team versteht nicht nur Technologie, sondern auch unser Business. Die Zusammenarbeit war transparent, effizient und hat echten Mehrwert geliefert.',
+    quote: 'Das Team versteht nicht nur Technologie, sondern auch unser Business. Die Zusammenarbeit war transparent, effizient und hat echten Mehrwert geliefert.',
     name: 'Sandra Brinkmann',
     role: 'Leiterin Digitalisierung, InnoGroup',
     initials: 'SB',
@@ -46,7 +41,7 @@ const testimonials = [
 
 export default function References() {
   return (
-    <section id="referenzen" className="bg-[#f5f5f7] py-24 px-6">
+    <section id="referenzen" className="bg-[#0d0d12] py-24 px-6">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -54,10 +49,10 @@ export default function References() {
           <span className="text-[#c8102e] text-xs font-semibold uppercase tracking-widest">
             Referenzen &amp; Vertrauen
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#1a1a2e] tracking-tight">
+          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Unternehmen, die uns vertrauen
           </h2>
-          <p className="mt-4 text-[#5a5a72] max-w-lg mx-auto">
+          <p className="mt-4 text-[#808098] max-w-lg mx-auto">
             Wir arbeiten mit Unternehmen jeder Größe — vom innovativen Mittelständler
             bis zum börsennotierten Konzern.
           </p>
@@ -75,13 +70,10 @@ export default function References() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-2xl p-8 border border-[#e8e8ed] shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow duration-300"
+              className="bg-[#13131c] rounded-2xl p-8 border border-white/5 hover:border-[#c8102e]/20 hover:shadow-xl hover:shadow-[#c8102e]/5 transition-all duration-300 relative overflow-hidden"
             >
               {/* Quote mark */}
-              <span
-                className="absolute top-4 right-6 text-7xl text-[#c8102e]/8 font-serif leading-none select-none"
-                aria-hidden
-              >
+              <span className="absolute top-4 right-6 text-7xl text-[#c8102e]/10 font-serif leading-none select-none" aria-hidden>
                 &ldquo;
               </span>
 
@@ -94,7 +86,7 @@ export default function References() {
                 ))}
               </div>
 
-              <blockquote className="text-[#1a1a2e] leading-relaxed mb-6 relative z-10">
+              <blockquote className="text-[#c8c8d8] leading-relaxed mb-6 relative z-10">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
 
@@ -103,8 +95,8 @@ export default function References() {
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-semibold text-[#1a1a2e] text-sm">{t.name}</p>
-                  <p className="text-xs text-[#5a5a72]">{t.role}</p>
+                  <p className="font-semibold text-white text-sm">{t.name}</p>
+                  <p className="text-xs text-[#808098]">{t.role}</p>
                 </div>
               </div>
             </div>
