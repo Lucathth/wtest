@@ -73,9 +73,12 @@ class Renderer {
     this.color = rgb;
   }
 
-  /** Resize canvas to match window DPR — call on window resize. */
+  /** Resize canvas to match window DPR — call on window resize.
+   *  DPR capped at 1.5: on Retina/3× screens the full resolution gives no
+   *  visible improvement for a noise shader but doubles/triples pixel count.
+   */
   updateScale() {
-    const dpr = Math.max(1, window.devicePixelRatio);
+    const dpr = Math.min(Math.max(1, window.devicePixelRatio), 1.5);
     this.canvas.width  = window.innerWidth  * dpr;
     this.canvas.height = window.innerHeight * dpr;
     this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
@@ -188,8 +191,14 @@ export function SmokeBackground({ smokeColor = '#c8102e' }) {
     const renderer = new Renderer(canvas, FRAGMENT_SHADER);
     rendererRef.current = renderer;
 
-    const onResize = () => renderer.updateScale();
-    onResize(); // set initial size
+    // Debounce resize: the shader only needs to update once the user
+    // finishes resizing, not on every pixel of drag.
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => renderer.updateScale(), 120);
+    };
+    renderer.updateScale(); // set initial size immediately
     window.addEventListener('resize', onResize, { passive: true });
 
     let raf;
@@ -200,6 +209,7 @@ export function SmokeBackground({ smokeColor = '#c8102e' }) {
     raf = requestAnimationFrame(loop);
 
     return () => {
+      clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(raf);
       renderer.reset();

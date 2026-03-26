@@ -34,7 +34,10 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.65s ease-out forwards;
+  /* "both" = backwards (hold FROM keyframe during delay, preventing flash)
+     + forwards (hold TO keyframe after end). Without this, elements were
+     fully visible for the duration of the delay before animating in. */
+  animation: fadeInUp 0.65s ease-out both;
 }
 
 .delay-100 { animation-delay: 0.10s; }
