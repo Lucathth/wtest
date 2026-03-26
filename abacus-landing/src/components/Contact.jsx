@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LiquidButton } from './ui/LiquidGlassButton';
 
 /**
  * Contact Form Section — dark theme.
@@ -149,14 +150,12 @@ export default function Contact() {
                 {errors.datenschutz && <p className="mt-1 text-xs text-red-400 ml-7">{errors.datenschutz}</p>}
               </div>
 
-              <button type="submit"
-                className="w-full bg-[#c8102e] hover:bg-[#e8294a] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-[#c8102e]/20 transition-all duration-200 hover:-translate-y-0.5 flex items-center justify-center gap-2"
-              >
+              <LiquidButton variant="red" size="full" type="submit">
                 Anfrage absenden
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
-              </button>
+              </LiquidButton>
 
               <p className="text-center text-xs text-white/20">* Pflichtfelder. Keine Weitergabe an Dritte.</p>
             </form>

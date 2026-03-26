@@ -1,4 +1,5 @@
 import { SmokeBackground } from './ui/SmokeBackground';
+import { LiquidButton } from './ui/LiquidGlassButton';
 
 /**
  * Hero Section
@@ -44,21 +45,18 @@ export default function Hero() {
           </p>
 
           <div className="animate-fade-in-up delay-300 flex flex-wrap gap-4">
-            <a
-              href="#kontakt"
-              className="inline-flex items-center gap-2 bg-[#c8102e] hover:bg-[#e8294a] text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-[#c8102e]/30 transition-all duration-200 hover:-translate-y-0.5"
-            >
+            {/* Primary CTA — red liquid glass */}
+            <LiquidButton variant="red" size="lg" href="#kontakt">
               Kontakt aufnehmen
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
-            </a>
-            <a
-              href="#leistungen"
-              className="inline-flex items-center gap-2 border border-white/20 hover:border-[#c8102e]/60 text-white hover:text-[#ff4060] font-semibold px-7 py-3.5 rounded-xl backdrop-blur-sm transition-all duration-200"
-            >
+            </LiquidButton>
+
+            {/* Secondary CTA — neutral ghost glass */}
+            <LiquidButton variant="ghost" size="lg" href="#leistungen">
               Leistungen entdecken
-            </a>
+            </LiquidButton>
           </div>
 
           {/* Trust mini-stats */}

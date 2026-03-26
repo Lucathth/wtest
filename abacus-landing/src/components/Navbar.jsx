@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { LiquidButton } from './ui/LiquidGlassButton';
 
 /**
  * Sticky dark Navbar — transparent on top, dark glass on scroll.
@@ -56,12 +57,9 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTA */}
-        <a
-          href="#kontakt"
-          className="hidden md:inline-flex items-center gap-2 bg-[#c8102e] hover:bg-[#e8294a] text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-lg shadow-[#c8102e]/20 transition-all duration-200"
-        >
+        <LiquidButton variant="red" size="sm" href="#kontakt" className="hidden md:inline-flex">
           Kontakt aufnehmen
-        </a>
+        </LiquidButton>
 
         {/* Hamburger */}
         <button
@@ -91,13 +89,13 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <a
-                href="#kontakt"
+              <LiquidButton
+                variant="red" size="sm" href="#kontakt"
                 onClick={() => setMenuOpen(false)}
-                className="block bg-[#c8102e] text-white text-center font-semibold px-5 py-2.5 rounded-lg mt-1"
+                className="w-full mt-1"
               >
                 Kontakt aufnehmen
-              </a>
+              </LiquidButton>
             </li>
           </ul>
         </div>
