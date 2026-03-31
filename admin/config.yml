@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: claude/fix-netlify-deployment-0cEyK
   identity_url: https://abacus-webtesting.netlify.app/.netlify/identity
-  site_url: https://abacus-webtesting.netlify.app
+  site_url: https://abacus-webtesting.netlify.app/admin
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
