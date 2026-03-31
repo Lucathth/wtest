@@ -1,0 +1,23 @@
+{
+  "seo": {
+    "title": "Abacus Solutions — ERP Software für Ihr Unternehmen",
+    "description": "ERP-Software für mittelständische Dienstleister: ABACUS allprojects unterstützt Architekten und Ingenieure bei Projektplanung, Controlling und Ressourcenmanagement – jetzt informieren.",
+    "canonical": ""
+  },
+  "og": {
+    "title": "Abacus Solutions — ERP Software für Ihr Unternehmen",
+    "description": "ERP-Software für mittelständische Dienstleister: ABACUS allprojects unterstützt Architekten und Ingenieure bei Projektplanung, Controlling und Ressourcenmanagement – jetzt informieren.",
+    "image": "",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  "robots": {
+    "index": true,
+    "follow": true
+  }
+}

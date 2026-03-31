@@ -399,6 +399,55 @@
     .catch(function() {
       // Falls content.json nicht verfügbar — statische Fallback-Inhalte bleiben sichtbar
     });
+
+  fetch('./metadata.json')
+    .then(function(r) { return r.json(); })
+    .then(function(m) {
+      if (m.seo) {
+        if (m.seo.title) document.title = m.seo.title;
+        var desc = document.querySelector('meta[name="description"]');
+        if (desc && m.seo.description) desc.setAttribute('content', m.seo.description);
+        var canon = document.querySelector('link[rel="canonical"]');
+        if (m.seo.canonical) {
+          if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
+          canon.href = m.seo.canonical;
+        }
+      }
+      if (m.robots) {
+        var robots = document.querySelector('meta[name="robots"]');
+        if (robots) {
+          robots.setAttribute('content', (m.robots.index ? 'index' : 'noindex') + ', ' + (m.robots.follow ? 'follow' : 'nofollow'));
+        }
+      }
+      if (m.og) {
+        var ogTitle = document.querySelector('meta[property="og:title"]');
+        var ogDesc  = document.querySelector('meta[property="og:description"]');
+        var ogType  = document.querySelector('meta[property="og:type"]');
+        var ogImg   = document.querySelector('meta[property="og:image"]');
+        if (ogTitle && m.og.title)       ogTitle.setAttribute('content', m.og.title);
+        if (ogDesc  && m.og.description) ogDesc.setAttribute('content', m.og.description);
+        if (ogType  && m.og.type)        ogType.setAttribute('content', m.og.type);
+        if (m.og.image) {
+          if (!ogImg) { ogImg = document.createElement('meta'); ogImg.setAttribute('property', 'og:image'); document.head.appendChild(ogImg); }
+          ogImg.setAttribute('content', m.og.image);
+        }
+      }
+      if (m.twitter) {
+        function setTw(name, val) {
+          if (!val) return;
+          var el = document.querySelector('meta[name="twitter:' + name + '"]');
+          if (!el) { el = document.createElement('meta'); el.name = 'twitter:' + name; document.head.appendChild(el); }
+          el.setAttribute('content', val);
+        }
+        setTw('card',        m.twitter.card);
+        setTw('title',       m.twitter.title       || (m.og && m.og.title));
+        setTw('description', m.twitter.description || (m.og && m.og.description));
+        setTw('image',       m.twitter.image       || (m.og && m.og.image));
+      }
+    })
+    .catch(function() {
+      // Falls metadata.json nicht verfügbar — statische Head-Tags bleiben erhalten
+    });
 </script>
 
 </body>
