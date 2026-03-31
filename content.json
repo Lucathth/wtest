@@ -1,0 +1,98 @@
+{
+  "hero": {
+    "badge": "IT-Beratung & Digitalisierung",
+    "headline_main": "Ihr digitaler",
+    "headline_highlight": "Wettbewerbsvorteil.",
+    "subtext": "Abacus Solutions begleitet Unternehmen auf dem Weg zur digitalen Exzellenz — von der Strategie bis zur Implementierung. Messbar. Nachhaltig. Auf Sie zugeschnitten.",
+    "cta_primary": "Kontakt aufnehmen",
+    "cta_secondary": "Leistungen entdecken"
+  },
+  "stats": [
+    { "value": "15+", "label": "Jahre Erfahrung" },
+    { "value": "200+", "label": "Projekte" },
+    { "value": "98 %", "label": "Kundenzufriedenheit" }
+  ],
+  "services": {
+    "badge": "Unsere Leistungen",
+    "headline": "Was wir für Sie leisten",
+    "subtext": "Von der strategischen Beratung bis zur technischen Umsetzung — wir decken das vollständige Spektrum der digitalen Transformation ab.",
+    "items": [
+      {
+        "title": "IT-Consulting",
+        "description": "Wir analysieren Ihre bestehende IT-Landschaft, identifizieren Engpässe und entwickeln eine zukunftssichere Technologiestrategie — von der Infrastruktur bis zur Cloud-Migration."
+      },
+      {
+        "title": "Prozessoptimierung",
+        "description": "Schlanke, automatisierte Prozesse sind der Schlüssel zu mehr Produktivität. Wir modellieren, analysieren und redesignen Ihre Geschäftsprozesse — messbar und nachhaltig."
+      },
+      {
+        "title": "Digitalisierung",
+        "description": "Von der Papierakte zur digitalen Plattform: Wir begleiten Ihre digitale Transformation ganzheitlich — von der Bestandsaufnahme über die Tool-Auswahl bis zum Go-live."
+      },
+      {
+        "title": "Datenanalyse & KI",
+        "description": "Aus Rohdaten werden Entscheidungsgrundlagen: Wir implementieren Business-Intelligence-Lösungen und KI-gestützte Prozesse, die Ihnen echten Informationsvorsprung verschaffen."
+      }
+    ]
+  },
+  "why": {
+    "badge": "Warum Abacus Solutions",
+    "headline": "Der Unterschied, der zählt",
+    "subtext": "Wir arbeiten mit Unternehmen jeder Größe — vom innovativen Mittelständler bis zum börsennotierten Konzern.",
+    "items": [
+      {
+        "title": "Über 15 Jahre Erfahrung",
+        "description": "Unsere Berater bringen jahrzehntelange Praxiserfahrung aus mittelständischen und Großunternehmen mit — quer durch alle Branchen."
+      },
+      {
+        "title": "Messbare Effizienzsteigerung",
+        "description": "Unsere Projekte erzielen im Schnitt 30 % Effizienzgewinn innerhalb des ersten Jahres — belegt durch transparentes KPI-Tracking von Tag eins."
+      },
+      {
+        "title": "Individuelle Lösungen",
+        "description": "Kein Copy-Paste. Jede Lösung entsteht auf Basis einer gründlichen Analyse Ihrer spezifischen Anforderungen, Prozesse und Ziele."
+      },
+      {
+        "title": "Modernste Technologien",
+        "description": "Wir setzen auf aktuelle, bewährte Tech-Stacks — Cloud-native, KI-ready und zukunftssicher, damit Ihre Investition langfristig trägt."
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "Referenzen & Vertrauen",
+    "headline": "Unternehmen, die uns vertrauen",
+    "items": [
+      {
+        "quote": "Dank Abacus Solutions haben wir unsere internen Prozesse in nur vier Monaten vollständig digitalisiert. Die Einsparungen übertrafen unsere Erwartungen deutlich.",
+        "name": "Dr. Markus Heidler",
+        "role": "CTO, TechCorp AG",
+        "initials": "MH"
+      },
+      {
+        "quote": "Das Team versteht nicht nur Technologie, sondern auch unser Business. Die Zusammenarbeit war transparent, effizient und hat echten Mehrwert geliefert.",
+        "name": "Sandra Brinkmann",
+        "role": "Leiterin Digitalisierung, InnoGroup",
+        "initials": "SB"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "Kostenlos & unverbindlich",
+    "headline_main": "Bereit für Ihren nächsten",
+    "headline_suffix": "digitalen Schritt?",
+    "subtext": "Vereinbaren Sie jetzt ein kostenloses Erstgespräch. Wir analysieren Ihre Situation und zeigen Ihnen konkrete Potenziale auf — ohne Verpflichtung.",
+    "cta_primary": "Jetzt Beratungsgespräch vereinbaren",
+    "cta_secondary": "Direkt anrufen"
+  },
+  "contact": {
+    "badge": "Kontakt",
+    "headline": "Sprechen wir über Ihre Herausforderung",
+    "subtext": "Füllen Sie das Formular aus — wir melden uns in der Regel innerhalb von 24 Stunden für ein erstes, unverbindliches Kennenlerngespräch.",
+    "phone": "+49 89 123 456 789",
+    "email": "info@abacus-solutions.de",
+    "address": "Maximilianstraße 42, 80538 München"
+  },
+  "footer": {
+    "tagline": "Ihr Partner für IT-Beratung, Prozessoptimierung und digitale Transformation. Messbar. Nachhaltig. Individuell."
+  }
+}

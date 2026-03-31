@@ -8,12 +8,116 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "pages"
-    label: "Seiten"
+  - name: "homepage"
+    label: "Homepage"
     files:
-      - file: "index.html"
-        label: "Homepage"
-        name: "home"
+      - name: "content"
+        label: "Seiteninhalt"
+        file: "content.json"
+        format: json
         fields:
-          - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Beschreibung", name: "description", widget: "text" }
+
+          # ── HERO ──────────────────────────────────────────
+          - label: "Hero-Bereich"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Badge-Text",              name: "badge",               widget: "string" }
+              - { label: "Überschrift (Zeile 1)",   name: "headline_main",       widget: "string" }
+              - { label: "Überschrift (Zeile 2, rot)", name: "headline_highlight", widget: "string" }
+              - { label: "Untertext",               name: "subtext",             widget: "text" }
+              - { label: "Button 1 – Text",         name: "cta_primary",         widget: "string" }
+              - { label: "Button 2 – Text",         name: "cta_secondary",       widget: "string" }
+
+          # ── STATS ─────────────────────────────────────────
+          - label: "Kennzahlen (Hero)"
+            name: "stats"
+            widget: "list"
+            collapsed: true
+            fields:
+              - { label: "Wert (z.B. 15+)",  name: "value", widget: "string" }
+              - { label: "Bezeichnung",       name: "label", widget: "string" }
+
+          # ── SERVICES ──────────────────────────────────────
+          - label: "Leistungen"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge",      name: "badge",    widget: "string" }
+              - { label: "Überschrift", name: "headline", widget: "string" }
+              - { label: "Untertext",  name: "subtext",  widget: "text" }
+              - label: "Leistungskarten"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Titel",       name: "title",       widget: "string" }
+                  - { label: "Beschreibung", name: "description", widget: "text" }
+
+          # ── WHY ───────────────────────────────────────────
+          - label: "Warum Abacus Solutions"
+            name: "why"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge",      name: "badge",    widget: "string" }
+              - { label: "Überschrift", name: "headline", widget: "string" }
+              - { label: "Untertext",  name: "subtext",  widget: "text" }
+              - label: "Vorteile"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Titel",        name: "title",       widget: "string" }
+                  - { label: "Beschreibung", name: "description", widget: "text" }
+
+          # ── TESTIMONIALS ───────────────────────────────────
+          - label: "Referenzen / Testimonials"
+            name: "testimonials"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge",      name: "badge",    widget: "string" }
+              - { label: "Überschrift", name: "headline", widget: "string" }
+              - label: "Zitate"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Zitat",           name: "quote",    widget: "text" }
+                  - { label: "Name",             name: "name",     widget: "string" }
+                  - { label: "Position / Firma", name: "role",     widget: "string" }
+                  - { label: "Initialen (2 Buchstaben)", name: "initials", widget: "string" }
+
+          # ── CTA ───────────────────────────────────────────
+          - label: "CTA-Bereich (roter Abschnitt)"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge",                  name: "badge",           widget: "string" }
+              - { label: "Überschrift (Zeile 1)",  name: "headline_main",   widget: "string" }
+              - { label: "Überschrift (Zeile 2)",  name: "headline_suffix", widget: "string" }
+              - { label: "Untertext",              name: "subtext",         widget: "text" }
+              - { label: "Button 1 – Text",        name: "cta_primary",     widget: "string" }
+              - { label: "Button 2 – Text",        name: "cta_secondary",   widget: "string" }
+
+          # ── CONTACT ───────────────────────────────────────
+          - label: "Kontakt-Bereich"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Badge",      name: "badge",    widget: "string" }
+              - { label: "Überschrift", name: "headline", widget: "string" }
+              - { label: "Untertext",  name: "subtext",  widget: "text" }
+              - { label: "Telefon",    name: "phone",    widget: "string" }
+              - { label: "E-Mail",     name: "email",    widget: "string" }
+              - { label: "Adresse",    name: "address",  widget: "string" }
+
+          # ── FOOTER ────────────────────────────────────────
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Slogan / Tagline", name: "tagline", widget: "text" }
