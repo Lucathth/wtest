@@ -121,3 +121,50 @@ collections:
             collapsed: true
             fields:
               - { label: "Slogan / Tagline", name: "tagline", widget: "text" }
+
+      - name: "metadata"
+        label: "Metadaten"
+        file: "metadata.json"
+        format: json
+        fields:
+
+          # ── SEO ───────────────────────────────────────────
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Meta Title",       name: "title",       widget: "string",   hint: "Seitentitel im Browser-Tab und in Suchergebnissen (empfohlen: 50–60 Zeichen)" }
+              - { label: "Meta Description", name: "description", widget: "text",     hint: "Kurzbeschreibung für Suchergebnisse (empfohlen: 150–160 Zeichen)" }
+              - { label: "Canonical URL",    name: "canonical",   widget: "string",   required: false, hint: "Kanonische URL, falls abweichend von der Standard-URL" }
+
+          # ── OPEN GRAPH ────────────────────────────────────
+          - label: "Open Graph (Social Media)"
+            name: "og"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "OG Title",       name: "title",       widget: "string",   required: false, hint: "Titel beim Teilen auf Facebook, LinkedIn usw. (Standard: Meta Title)" }
+              - { label: "OG Description", name: "description", widget: "text",     required: false, hint: "Beschreibung beim Teilen (Standard: Meta Description)" }
+              - { label: "OG Bild",        name: "image",       widget: "image",    required: false, hint: "Vorschaubild beim Teilen (empfohlen: 1200 × 630 px)" }
+              - { label: "OG Typ",         name: "type",        widget: "select",   required: false, default: "website", options: ["website", "article"] }
+
+          # ── TWITTER CARD ──────────────────────────────────
+          - label: "Twitter / X Card"
+            name: "twitter"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Card-Typ",        name: "card",        widget: "select",   required: false, default: "summary_large_image", options: ["summary", "summary_large_image"] }
+              - { label: "Twitter Title",   name: "title",       widget: "string",   required: false, hint: "Titel für Twitter/X (Standard: OG Title)" }
+              - { label: "Twitter Description", name: "description", widget: "text", required: false, hint: "Beschreibung für Twitter/X (Standard: OG Description)" }
+              - { label: "Twitter Bild",    name: "image",       widget: "image",    required: false, hint: "Bild für Twitter/X Card (empfohlen: 1200 × 628 px)" }
+
+          # ── ROBOTS ────────────────────────────────────────
+          - label: "Indexierung (Robots)"
+            name: "robots"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Seite indexieren",   name: "index",  widget: "boolean", default: true,  hint: "Seite in Suchmaschinen aufnehmen (index / noindex)" }
+              - { label: "Links folgen",        name: "follow", widget: "boolean", default: true,  hint: "Suchmaschinen-Crawler dürfen Links folgen (follow / nofollow)" }
