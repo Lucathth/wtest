@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supabase Debug</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #eee; padding: 32px; max-width: 700px; margin: 0 auto; }
+    h1 { color: #c8102e; }
+    .box { background: #1e1e2a; border: 1px solid #333; border-radius: 8px; padding: 16px; margin: 16px 0; }
+    .ok  { color: #4ade80; } .err { color: #ff4060; } .info { color: #60a5fa; }
+    input, textarea { width: 100%; background: #2a2a3a; border: 1px solid #444; color: #fff; padding: 8px; border-radius: 6px; margin: 4px 0 12px; font-family: monospace; box-sizing: border-box; }
+    button { background: #c8102e; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; margin: 4px; }
+    button:disabled { opacity: 0.5; }
+    #log { white-space: pre-wrap; font-size: 13px; line-height: 1.7; }
+    label { font-size: 12px; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Supabase Debug Page</h1>
+
+  <div class="box">
+    <b>Step 1 — CDN &amp; Client Check</b>
+    <div id="cdn-status" style="margin-top:8px">Checking...</div>
+  </div>
+
+  <div class="box">
+    <b>Step 2 — Test Insert</b>
+    <div style="margin-top:12px">
+      <label>Name</label>
+      <input id="d-name" value="Debug Test" />
+      <label>Unternehmen</label>
+      <input id="d-firma" value="Test GmbH" />
+      <label>E-Mail</label>
+      <input id="d-email" value="debug@test.de" />
+      <label>Telefon</label>
+      <input id="d-telefon" value="+49 000 000" />
+      <label>Nachricht</label>
+      <textarea id="d-nachricht" rows="2">Debug-Test Eintrag</textarea>
+      <button id="insert-btn">Insert testen</button>
+      <button id="select-btn">SELECT (Lesetest)</button>
+    </div>
+  </div>
+
+  <div class="box">
+    <b>Log</b>
+    <div id="log"></div>
+  </div>
+
+  <!-- Try multiple CDN sources -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+  (function () {
+    const SUPABASE_URL = 'https://qmorsoqpcpkuaytulqlv.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_9G0kSQ_l4VHCiohCFsYxkA_3cVBm5LJ';
+
+    const logEl  = document.getElementById('log');
+    const cdnEl  = document.getElementById('cdn-status');
+
+    function log(msg, type) {
+      const cls = type === 'ok' ? 'ok' : type === 'err' ? 'err' : 'info';
+      logEl.innerHTML += `<span class="${cls}">[${new Date().toISOString().slice(11,23)}] ${msg}</span>\n`;
+      console.log(msg);
+    }
+
+    // ── 1. Check window.supabase ─────────────────────────────────
+    log('window.supabase = ' + JSON.stringify(typeof window.supabase), 'info');
+    log('window.supabase keys: ' + (window.supabase ? Object.keys(window.supabase).join(', ') : 'n/a'), 'info');
+
+    // supabase-js@2 UMD exports as window.supabase — but some builds differ
+    const factory =
+      (window.supabase && window.supabase.createClient)   ? window.supabase.createClient :
+      (window.Supabase && window.Supabase.createClient)   ? window.Supabase.createClient :
+      typeof createClient !== 'undefined'                  ? createClient :
+      null;
+
+    if (!factory) {
+      cdnEl.innerHTML = '<span class="err">CDN FAILED — createClient not found. window.supabase = ' + JSON.stringify(typeof window.supabase) + '</span>';
+      log('ERROR: createClient not available. CDN may have failed to load.', 'err');
+      document.getElementById('insert-btn').disabled = true;
+      document.getElementById('select-btn').disabled = true;
+      return;
+    }
+
+    log('createClient found: ' + factory.toString().slice(0, 60) + '...', 'ok');
+    cdnEl.innerHTML = '<span class="ok">CDN OK — createClient found</span>';
+
+    let client;
+    try {
+      client = factory(SUPABASE_URL, SUPABASE_KEY);
+      log('createClient() succeeded', 'ok');
+    } catch (e) {
+      cdnEl.innerHTML = '<span class="err">createClient() threw: ' + e.message + '</span>';
+      log('createClient() threw: ' + e.message, 'err');
+      return;
+    }
+
+    // ── 2. SELECT test ────────────────────────────────────────────
+    document.getElementById('select-btn').addEventListener('click', async function () {
+      log('--- SELECT test ---', 'info');
+      try {
+        const { data, error, status, statusText } = await client
+          .from('Kundendaten_CTA')
+          .select('id')
+          .limit(1);
+        log('Status: ' + status + ' ' + statusText, 'info');
+        if (error) log('SELECT error: ' + JSON.stringify(error), 'err');
+        else       log('SELECT ok, rows: ' + JSON.stringify(data), 'ok');
+      } catch (e) {
+        log('SELECT exception: ' + e.message, 'err');
+      }
+    });
+
+    // ── 3. INSERT test ────────────────────────────────────────────
+    document.getElementById('insert-btn').addEventListener('click', async function () {
+      log('--- INSERT test ---', 'info');
+      const payload = {
+        Name:        document.getElementById('d-name').value.trim(),
+        Unternehmen: document.getElementById('d-firma').value.trim(),
+        Mail:        document.getElementById('d-email').value.trim(),
+        Telefon:     document.getElementById('d-telefon').value.trim(),
+        Nachricht:   document.getElementById('d-nachricht').value.trim(),
+      };
+      log('Payload: ' + JSON.stringify(payload), 'info');
+      try {
+        const { data, error, status, statusText } = await client
+          .from('Kundendaten_CTA')
+          .insert([payload])
+          .select();
+        log('Status: ' + status + ' ' + statusText, 'info');
+        if (error) log('INSERT error: ' + JSON.stringify(error), 'err');
+        else       log('INSERT ok: ' + JSON.stringify(data), 'ok');
+      } catch (e) {
+        log('INSERT exception: ' + e.message + '\n' + e.stack, 'err');
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
