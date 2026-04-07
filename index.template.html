@@ -347,31 +347,40 @@
     const existing = form.querySelector('.form-msg');
     if (existing) existing.remove();
 
-    const payload = {
-      Name:        document.getElementById('contact-name').value.trim(),
-      Unternehmen: document.getElementById('contact-firma').value.trim(),
-      Mail:        document.getElementById('contact-email').value.trim(),
-      Telefon:     document.getElementById('contact-telefon').value.trim(),
-      Nachricht:   document.getElementById('contact-nachricht').value.trim(),
-    };
-
-    const { error } = await client.from('Kundendaten_CTA').insert([payload]);
-
     const msg = document.createElement('p');
     msg.className = 'form-msg';
     msg.style.cssText = 'text-align:center;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:4px;';
 
-    if (error) {
+    try {
+      const payload = {
+        Name:        document.getElementById('contact-name').value.trim(),
+        Unternehmen: document.getElementById('contact-firma').value.trim(),
+        Mail:        document.getElementById('contact-email').value.trim(),
+        Telefon:     document.getElementById('contact-telefon').value.trim(),
+        Nachricht:   document.getElementById('contact-nachricht').value.trim(),
+      };
+
+      const { error } = await client.from('Kundendaten_CTA').insert([payload]);
+
+      if (error) {
+        console.error('Supabase insert error:', error);
+        msg.style.background = 'rgba(200,16,46,0.15)';
+        msg.style.color = '#ff4060';
+        msg.style.border = '1px solid rgba(200,16,46,0.3)';
+        msg.textContent = 'Fehler beim Senden: ' + error.message;
+      } else {
+        msg.style.background = 'rgba(22,163,74,0.15)';
+        msg.style.color = '#4ade80';
+        msg.style.border = '1px solid rgba(22,163,74,0.3)';
+        msg.textContent = 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet.';
+        form.reset();
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
       msg.style.background = 'rgba(200,16,46,0.15)';
       msg.style.color = '#ff4060';
       msg.style.border = '1px solid rgba(200,16,46,0.3)';
       msg.textContent = 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
-    } else {
-      msg.style.background = 'rgba(22,163,74,0.15)';
-      msg.style.color = '#4ade80';
-      msg.style.border = '1px solid rgba(22,163,74,0.3)';
-      msg.textContent = 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet.';
-      form.reset();
     }
 
     btn.disabled = false;
