@@ -16,7 +16,7 @@
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MC4QV4X8');</script>
   <!-- Supabase JS Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
@@ -330,7 +330,19 @@
 (function () {
   const SUPABASE_URL = 'https://qmorsoqpcpkuaytulqlv.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_9G0kSQ_l4VHCiohCFsYxkA_3cVBm5LJ';
-  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // supabase-js@2 UMD exposes createClient on window.supabase — be defensive
+  const createClient =
+    (window.supabase && window.supabase.createClient) ||
+    (window.Supabase && window.Supabase.createClient) ||
+    window.createClient;
+
+  if (!createClient) {
+    console.error('Supabase CDN failed to load — createClient not found');
+    return;
+  }
+
+  const client = createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const form = document.getElementById('contact-form');
   if (!form) return;
