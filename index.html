@@ -404,7 +404,7 @@
       msg.style.background = 'rgba(200,16,46,0.15)';
       msg.style.color = '#ff4060';
       msg.style.border = '1px solid rgba(200,16,46,0.3)';
-      msg.textContent = 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
+      msg.textContent = 'Fehler: ' + (err && err.message ? err.message : String(err));
     }
 
     btn.disabled = false;
