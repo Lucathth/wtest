@@ -15,6 +15,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23c8102e'/><text x='16' y='23' font-size='18' font-family='Inter,sans-serif' font-weight='700' text-anchor='middle' fill='white'>A</text></svg>" />
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MC4QV4X8');</script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
@@ -245,32 +247,31 @@
       </div>
       <!-- Right: Form -->
       <div style="background:#13131c;border-radius:16px;padding:32px;border:1px solid rgba(255,255,255,0.05)">
-        <form name="contact" method="POST" data-netlify="true" style="display:flex;flex-direction:column;gap:20px">
-          <input type="hidden" name="form-name" value="contact" />
+        <form id="contact-form" style="display:flex;flex-direction:column;gap:20px">
           <h3 style="font-size:18px;font-weight:700">Anfrage senden</h3>
           <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
             <div>
               <label class="form-label">Name *</label>
-              <input type="text" name="name" placeholder="Max Mustermann" required class="input" />
+              <input type="text" id="contact-name" name="name" placeholder="Max Mustermann" required class="input" />
             </div>
             <div>
               <label class="form-label">Unternehmen</label>
-              <input type="text" name="firma" placeholder="Mustermann GmbH" class="input" />
+              <input type="text" id="contact-firma" name="firma" placeholder="Mustermann GmbH" class="input" />
             </div>
           </div>
           <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
             <div>
               <label class="form-label">E-Mail *</label>
-              <input type="email" name="email" placeholder="max@mustermann.de" required class="input" />
+              <input type="email" id="contact-email" name="email" placeholder="max@mustermann.de" required class="input" />
             </div>
             <div>
               <label class="form-label">Telefon</label>
-              <input type="tel" name="telefon" placeholder="+49 89 …" class="input" />
+              <input type="tel" id="contact-telefon" name="telefon" placeholder="+49 89 …" class="input" />
             </div>
           </div>
           <div>
             <label class="form-label">Ihre Nachricht *</label>
-            <textarea name="nachricht" rows="4" placeholder="Beschreiben Sie kurz Ihre Herausforderung …" required class="input"></textarea>
+            <textarea id="contact-nachricht" name="nachricht" rows="4" placeholder="Beschreiben Sie kurz Ihre Herausforderung …" required class="input"></textarea>
           </div>
           <div>
             <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer">
@@ -323,6 +324,62 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+(function () {
+  const SUPABASE_URL = 'https://qmorsoqpcpkuaytulqlv.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_9G0kSQ_l4VHCiohCFsYxkA_3cVBm5LJ';
+  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalHTML = btn.innerHTML;
+
+    btn.disabled = true;
+    btn.innerHTML = 'Wird gesendet\u2026';
+
+    const existing = form.querySelector('.form-msg');
+    if (existing) existing.remove();
+
+    const payload = {
+      Name:        document.getElementById('contact-name').value.trim(),
+      Unternehmen: document.getElementById('contact-firma').value.trim(),
+      Mail:        document.getElementById('contact-email').value.trim(),
+      Telefon:     document.getElementById('contact-telefon').value.trim(),
+      Nachricht:   document.getElementById('contact-nachricht').value.trim(),
+    };
+
+    const { error } = await client.from('Kundendaten_CTA').insert([payload]);
+
+    const msg = document.createElement('p');
+    msg.className = 'form-msg';
+    msg.style.cssText = 'text-align:center;font-size:14px;padding:12px 16px;border-radius:8px;margin-top:4px;';
+
+    if (error) {
+      msg.style.background = 'rgba(200,16,46,0.15)';
+      msg.style.color = '#ff4060';
+      msg.style.border = '1px solid rgba(200,16,46,0.3)';
+      msg.textContent = 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
+    } else {
+      msg.style.background = 'rgba(22,163,74,0.15)';
+      msg.style.color = '#4ade80';
+      msg.style.border = '1px solid rgba(22,163,74,0.3)';
+      msg.textContent = 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet.';
+      form.reset();
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = originalHTML;
+    form.appendChild(msg);
+  });
+})();
+</script>
 
 </body>
 </html>
