@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abacus Solutions im Vergleich — ERP-Alternativen objektiv verglichen</title>
-  <meta name="description" content="Vergleichen Sie Abacus Solutions mit SAP, Sage, DATEV und anderen ERP-Anbietern. Objektive Vergleiche zu Funktionen, Preisen und Zielgruppen." />
+  <title>Blog — Insights &amp; Expertise | abacus-solutions</title>
+  <meta name="description" content="Fachartikel, Praxiswissen und Einblicke rund um ERP, Digitalisierung und KI im Mittelstand – vom Team abacus-solutions." />
   <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,19 +45,17 @@
     .hero h1 span { color: #c8102e; }
     .hero p { font-size: 18px; color: #a0a0b8; line-height: 1.7; margin-bottom: 40px; max-width: 560px; }
 
-    /* Comparison Cards */
-    .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; padding-bottom: 96px; }
+    /* Blog Cards */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; padding-bottom: 96px; }
 
-    .comparison-card { background: #13131c; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
-    .comparison-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .blog-card { background: #13131c; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
 
-    .card-header { padding: 32px 28px 24px; display: flex; align-items: center; gap: 16px; }
-    .card-vs { display: flex; align-items: center; gap: 12px; }
-    .card-logo { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; }
-    .card-vs-divider { font-size: 13px; font-weight: 700; color: #808098; text-transform: uppercase; letter-spacing: 0.05em; }
+    .card-header { padding: 32px 28px 20px; }
+    .card-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c8102e; margin-bottom: 14px; display: block; }
 
     .card-body { padding: 0 28px 28px; flex: 1; display: flex; flex-direction: column; }
-    .card-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .card-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.3; }
     .card-body p { font-size: 14px; color: #808098; line-height: 1.7; margin-bottom: 24px; flex: 1; }
 
     .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -65,7 +63,6 @@
 
     .card-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #c8102e; transition: gap 0.2s; }
     .card-link:hover { gap: 12px; }
-    .card-link svg { transition: transform 0.2s; }
 
     /* CTA Section */
     .cta-section { background: #c8102e; padding: 80px 0; position: relative; overflow: hidden; }
@@ -88,7 +85,7 @@
     @media (max-width: 768px) {
       .nav-links { gap: 16px; }
       .nav-links .btn-nav { display: none; }
-      .comparison-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
       .hero { padding: 100px 0 60px; }
     }
     @media (max-width: 480px) {
@@ -109,8 +106,8 @@
       <a href="../#leistungen">Leistungen</a>
       <a href="../#warum">Warum Abacus</a>
       <a href="../#referenzen">Referenzen</a>
-      <a href="./" class="active">Vergleiche</a>
-      <a href="../blog/">Blog</a>
+      <a href="../vergleiche/">Vergleiche</a>
+      <a href="./" class="active">Blog</a>
       <a href="../#kontakt" class="btn-nav">Kontakt</a>
     </nav>
   </div>
@@ -122,91 +119,40 @@
   <div class="section-inner" style="position:relative;z-index:1">
     <div class="badge">
       <span class="dot-pulse"></span>
-      ERP-Software im Vergleich
+      Insights &amp; Expertise
     </div>
-    <h1>Abacus Solutions <span>im Vergleich.</span></h1>
-    <p>Wie schlägt sich Abacus gegen andere ERP-Lösungen? Objektive Vergleiche zu Funktionen, Zielgruppen und Stärken — damit Sie die richtige Entscheidung treffen.</p>
+    <h1>Wissen, das <span>weiterbringt.</span></h1>
+    <p>Fachartikel, Praxiswissen und Einblicke rund um ERP, Digitalisierung und KI im Mittelstand — direkt vom Team abacus-solutions.</p>
   </div>
 </section>
 
-<!-- COMPARISON CARDS -->
+<!-- BLOG CARDS -->
 <section style="background:#0d0d12;padding:96px 0">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:64px">
-      <p style="color:#c8102e;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px">Alle Vergleiche</p>
-      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.025em;margin-bottom:16px">Finden Sie die beste Lösung für Ihr Unternehmen</h2>
-      <p style="color:#808098;line-height:1.7;max-width:560px;margin:0 auto">Jeder Vergleich beleuchtet Stärken, Schwächen und Einsatzgebiete — neutral und praxisnah.</p>
+      <p style="color:#c8102e;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px">Alle Artikel</p>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;letter-spacing:-0.025em;margin-bottom:16px">Aktuelle Beiträge</h2>
+      <p style="color:#808098;line-height:1.7;max-width:560px;margin:0 auto">Fundiertes Expertenwissen für Entscheider im Mittelstand — praxisnah, aktuell und ohne Fachjargon.</p>
     </div>
 
-    <div class="comparison-grid">
+    <div class="blog-grid">
 
-      <!-- Card: Abacus vs SAP -->
-      <a href="abacus-vs-sap.html" class="comparison-card" style="text-decoration:none;color:inherit">
+      <!-- Card: AI-gestütztes ERP -->
+      <a href="ai-erp-embedded-intelligence.html" class="blog-card" style="text-decoration:none;color:inherit">
         <div class="card-header">
-          <div class="card-vs">
-            <div class="card-logo" style="background:rgba(200,16,46,0.15);color:#c8102e">A</div>
-            <span class="card-vs-divider">vs</span>
-            <div class="card-logo" style="background:rgba(0,120,214,0.15);color:#0078d6">S</div>
-          </div>
+          <span class="card-kicker">Digitalisierung &amp; KI im Mittelstand</span>
         </div>
         <div class="card-body">
-          <h3>Abacus vs. SAP</h3>
-          <p>Enterprise-ERP-Gigant gegen spezialisierte Mittelstandslösung. Wann lohnt sich welches System — und wo liegen die entscheidenden Unterschiede?</p>
+          <h3>AI-gestütztes ERP: Wie Embedded Intelligence und holistische Automation den Mittelstand neu definieren</h3>
+          <p>ERP-Systeme waren lange das operative Rückgrat von Unternehmen. Mit tief integrierter KI, Cloud-nativen Architekturen und konversationsfähigen Schnittstellen werden sie zu intelligenten, lernenden Systemen, die aktiv mitdenken.</p>
           <div class="card-tags">
-            <span class="card-tag">Enterprise</span>
             <span class="card-tag">ERP</span>
-            <span class="card-tag">Skalierung</span>
-          </div>
-          <span class="card-link">
-            Vergleich ansehen
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <!-- Card: Abacus vs Sage -->
-      <a href="abacus-vs-sage.html" class="comparison-card" style="text-decoration:none;color:inherit">
-        <div class="card-header">
-          <div class="card-vs">
-            <div class="card-logo" style="background:rgba(200,16,46,0.15);color:#c8102e">A</div>
-            <span class="card-vs-divider">vs</span>
-            <div class="card-logo" style="background:rgba(0,170,79,0.15);color:#00aa4f">S</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Abacus vs. Sage</h3>
-          <p>Zwei starke Mittelstandslösungen im direkten Vergleich. Buchhaltung, Prozesssteuerung, Branchenfokus — wo punktet wer?</p>
-          <div class="card-tags">
+            <span class="card-tag">KI</span>
+            <span class="card-tag">Automatisierung</span>
             <span class="card-tag">Mittelstand</span>
-            <span class="card-tag">Buchhaltung</span>
-            <span class="card-tag">KMU</span>
           </div>
           <span class="card-link">
-            Vergleich ansehen
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <!-- Card: Abacus vs DATEV -->
-      <a href="abacus-vs-datev.html" class="comparison-card" style="text-decoration:none;color:inherit">
-        <div class="card-header">
-          <div class="card-vs">
-            <div class="card-logo" style="background:rgba(200,16,46,0.15);color:#c8102e">A</div>
-            <span class="card-vs-divider">vs</span>
-            <div class="card-logo" style="background:rgba(0,150,130,0.15);color:#009682">D</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>Abacus vs. DATEV</h3>
-          <p>Steuerberater-Standard gegen integrierte ERP-Lösung. Für wen eignet sich welches System — und wo ergänzen sie sich sogar?</p>
-          <div class="card-tags">
-            <span class="card-tag">Steuerberatung</span>
-            <span class="card-tag">Finanzen</span>
-            <span class="card-tag">Integration</span>
-          </div>
-          <span class="card-link">
-            Vergleich ansehen
+            Artikel lesen
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
           </span>
         </div>
@@ -220,8 +166,8 @@
 <section class="cta-section">
   <div class="grid-pattern" style="opacity:0.05"></div>
   <div class="section-inner">
-    <h2>Unsicher, welche Lösung passt?</h2>
-    <p>Wir beraten Sie herstellerunabhängig und finden gemeinsam die ERP-Lösung, die wirklich zu Ihrem Unternehmen passt.</p>
+    <h2>Fragen zu ERP oder Digitalisierung?</h2>
+    <p>Wir beraten Sie individuell und zeigen, welche Lösung wirklich zu Ihrem Unternehmen passt.</p>
     <a href="../#kontakt" class="btn btn-white">
       Kostenlose Beratung anfragen
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
@@ -239,10 +185,11 @@
       </a>
       <div class="footer-links">
         <a href="../">Startseite</a>
-        <a href="./">Vergleiche</a>
+        <a href="../vergleiche/">Vergleiche</a>
+        <a href="./">Blog</a>
         <a href="../#kontakt">Kontakt</a>
       </div>
-      <p class="footer-copy">&copy; 2024 Abacus Solutions. Alle Rechte vorbehalten.</p>
+      <p class="footer-copy">&copy; 2025 Abacus Solutions. Alle Rechte vorbehalten.</p>
     </div>
   </div>
 </footer>
